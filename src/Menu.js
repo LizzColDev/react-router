@@ -7,7 +7,7 @@ function Menu(){
     <ul>
 
         {routes.map(route =>(
-            <li key={route.text}>
+            <li key={route.to}>
                 <NavLink
                 end
                     style={({isActive})=>({
