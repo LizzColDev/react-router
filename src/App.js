@@ -6,7 +6,7 @@ import { ProfilePage } from "./ProfilePage";
 import { BlogPost } from "./BlogPost";
 import { Login } from "./Login";
 import { Logout } from "./Logout";
-import { AuthProvider } from "./auth";
+import { AuthProvider, AuthRoute } from "./auth";
 
 function App() {
   return (
@@ -19,9 +19,19 @@ function App() {
         <Route path="/blog" element={<BlogPage/>} >
           <Route path=":slug" element={<BlogPost/>} />
         </Route>
-        <Route path="/profile" element={<ProfilePage/>} />
+        <Route path="/profile" element={
+          <AuthRoute>
+            <ProfilePage/>
+          </AuthRoute>
+        } 
+        />
+        <Route path="/logout" element={
+          <AuthRoute>
+            <Logout/>
+          </AuthRoute>
+        } 
+        />
         <Route path="/login" element={<Login/>} />
-        <Route path="/logout" element={<Logout/>} />
         <Route path="*" element={<p>Not Found</p>} />
       </Routes>
     </AuthProvider>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useAuth } from './auth';
+import { Navigate } from 'react-router-dom';
 
 function Login(){
     const auth = useAuth();
@@ -8,6 +9,10 @@ function Login(){
     const login = (e) => {
         e.preventDefault();
         auth.login(userName);
+    }
+
+    if(auth.user){
+        return <Navigate to='/profile'/>
     }
     return(
         <>
